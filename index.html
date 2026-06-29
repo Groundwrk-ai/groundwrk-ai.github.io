@@ -4,47 +4,151 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Framewrk Labs</title>
-    <meta http-equiv="refresh" content="0; url=/formwrk/" />
+    <meta name="description" content="Framewrk Labs — construction technology. Groundwrk procurement platform and the Formwrk material planning tool." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --bg: #15181d;
+        --text: #e8eaed;
+        --dim: #8b95a1;
+        --border: #2b323c;
+        --blue: #1a6fc4;
+        --green: #2f9e6b;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; min-height: 100%; }
       body {
-        margin: 0;
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #1a1e24;
-        color: #e8eaed;
+        padding: 32px 20px;
+        color: var(--text);
         font-family: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+        background:
+          radial-gradient(1100px 600px at 50% -10%, #232a34 0%, rgba(35, 42, 52, 0) 60%),
+          var(--bg);
+        -webkit-font-smoothing: antialiased;
       }
-      .box {
-        text-align: center;
-        padding: 24px;
+      .wrap { width: 100%; max-width: 880px; text-align: center; }
+
+      header { margin-bottom: 40px; }
+      .brand {
+        font-size: clamp(34px, 6vw, 52px);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin: 0;
       }
-      h1 {
-        font-weight: 700;
-        letter-spacing: 0.5px;
-        margin: 0 0 8px;
+      .brand .dot { color: var(--blue); }
+      .tagline {
+        margin: 10px 0 0;
+        color: var(--dim);
+        font-size: 15px;
+        letter-spacing: 0.3px;
       }
-      p {
-        color: #8b95a1;
+
+      .tiles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
       }
-      a {
-        color: #1a6fc4;
+      @media (max-width: 640px) {
+        .tiles { grid-template-columns: 1fr; }
+      }
+
+      .tile {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 6px;
+        padding: 28px 26px;
+        min-height: 220px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: linear-gradient(160deg, #1f242d 0%, #191d24 100%);
         text-decoration: none;
+        color: var(--text);
+        transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      }
+      .tile:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.7);
+      }
+      .tile.groundwrk:hover { border-color: var(--green); }
+      .tile.formwrk:hover { border-color: var(--blue); }
+
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 46px;
+        height: 46px;
+        border-radius: 11px;
+        margin-bottom: 10px;
+      }
+      .groundwrk .icon { background: rgba(47, 158, 107, 0.15); color: #4fbd8a; }
+      .formwrk .icon { background: rgba(26, 111, 196, 0.15); color: #5aa6ee; }
+      .icon svg { width: 24px; height: 24px; }
+
+      .tile h2 { margin: 0; font-size: 24px; font-weight: 700; }
+      .tile p { margin: 0; color: var(--dim); font-size: 14.5px; line-height: 1.45; }
+      .cta {
+        margin-top: auto;
+        padding-top: 16px;
+        font-size: 13.5px;
         font-weight: 600;
       }
-      a:hover {
-        text-decoration: underline;
+      .groundwrk .cta { color: #4fbd8a; }
+      .formwrk .cta { color: #5aa6ee; }
+
+      footer {
+        margin-top: 36px;
+        color: var(--dim);
+        font-size: 12px;
       }
     </style>
   </head>
   <body>
-    <div class="box">
-      <h1>Framewrk Labs</h1>
-      <p>Redirecting to the <a href="/formwrk/">Material Planning Tool</a>…</p>
-    </div>
-    <script>
-      location.replace('/formwrk/');
-    </script>
+    <main class="wrap">
+      <header>
+        <h1 class="brand">Framewrk Labs<span class="dot">.</span></h1>
+        <p class="tagline">Construction technology</p>
+      </header>
+
+      <div class="tiles">
+        <a class="tile groundwrk" href="https://groundwrk.com.au/">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+            </svg>
+          </span>
+          <h2>Groundwrk</h2>
+          <p>Construction Procurement Platform</p>
+          <span class="cta">groundwrk.com.au &rarr;</span>
+        </a>
+
+        <a class="tile formwrk" href="/formwrk/">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+            </svg>
+          </span>
+          <h2>Formwrk</h2>
+          <p>Formwork Material Planning Tool</p>
+          <span class="cta">Open Formwrk &rarr;</span>
+        </a>
+      </div>
+
+      <footer>&copy; Framewrk Labs</footer>
+    </main>
   </body>
 </html>
